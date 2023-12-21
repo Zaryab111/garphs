@@ -110,20 +110,34 @@ class Graph {
 public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph();
+            graph.addNode("A");
+            graph.addNode("B");
+            graph.addNode("C");
+            graph.addNode("D");
+            graph.addNode("E");
+            graph.addNode("F");
+            graph.addNode("G");
+            graph.addNode("H");
+            graph.addNode("I");
+            graph.addNode("J");
+            graph.addNode("K");
+            graph.addNode("L");
+            graph.addNode("M");
+            graph.addNode("N");
+            graph.addNode("O");
+            graph.addNode("P");
+            graph.addNode("Q");
+            graph.addNode("R");
+            graph.addNode("S");
+            graph.addNode("T");
+        
 
-        // Add vertices
-        for (char c = 'A'; c <= 'T'; c++) {
-            graph.addNode(String.valueOf(c));
-        }
-
-        // Add directed edges manually
         graph.addDirectedEdge("A", "B");
         graph.addDirectedEdge("B", "C");
         graph.addDirectedEdge("C", "D");
         graph.addDirectedEdge("D", "A");
         graph.addDirectedEdge("E", "F");
         graph.addDirectedEdge("F", "G");
-        // Add more edges manually
         graph.addDirectedEdge("A", "E");
         graph.addDirectedEdge("B", "F");
         graph.addDirectedEdge("C", "G");
@@ -145,23 +159,19 @@ public class Main {
         graph.addDirectedEdge("S", "C");
         graph.addDirectedEdge("T", "D");
 
-        // Display the graph
         graph.display();
 
-        // Take user input for source and destination vertices
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter source: ");
+        System.out.print("source: ");
         String source = scanner.next();
         System.out.print("Enter destination: ");
         String destination = scanner.next();
-
-        // Perform BFS and display the result
         ArrayList<String> path = graph.bfs(source, destination);
         if (!path.isEmpty()) {
             System.out.println("Path: " + String.join(" --> ", path));
             System.out.println("Length of the path: " + (path.size() - 1));
         } else {
-            System.out.println("Path doesn't exist.");
+            System.out.println("no Path.");
         }
     }
 }
