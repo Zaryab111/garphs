@@ -13,12 +13,67 @@ public class graph_creation{
             adjacency[i] = new LinkedList<Integer>();
         }
     }
-
     public void addEdges(int s, int d)
      {
                 adjacency[s].add(d);
                 adjacency[d].add(s);
      }
+
+     public void bfs(int source)
+     {
+       boolean visitedNode[]= new boolean[adjacency.length];
+       int parentNode[]= new int[adjacency.length];
+       Queue<Integer> queue = new LinkedList<>();
+       queue.add(source);
+       visitedNode[source] = true;
+       parentNode[source] = -1;
+       while(!queue.isEmpty())
+       {
+        int p = queue.poll();
+        System.out.println(p);
+        for(int i:adjacency[p])
+        {
+            if(visitedNode[i] != true)
+            {
+                visitedNode[i] = true;
+                queue.add(i);
+                parentNode[i] =p; 
+            }
+        }
+       }
+
+     }
+     public void dfs(int source)
+     {
+        boolean visitedNode[] = new boolean[adjacency.length];
+        int parentNode[] = new int[adjacency.length];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(source);
+        visitedNode[source] = true;
+        parentNode[source] = -1;
+        while(!stack.isEmpty())
+        {
+            int p = stack.pop();
+            System.out.println(p);
+
+            for(int i : adjacency[p])
+            {
+                if (visitedNode[i] != true)
+                {
+                    visitedNode[i] = true;
+                    parentNode[i] = p;
+                    stack.push(i);
+                }
+            }
+
+
+        }
+
+
+     }
+
+
+
         public static void main(String[] args)
         {
             Scanner sc = new Scanner(System.in);
@@ -34,7 +89,17 @@ public class graph_creation{
                 g.addEdges(s, d);
                
             }
+            System.out.println("bfs t");
+        System.out.println("enter source");
+        int source = sc.nextInt();
+        g.bfs(source);
+
+        System.out.println("dfs t");
+        System.out.println("enter source");
+        source = sc.nextInt();
+        g.dfs(source);
 
         }
+        
+    
     }
-
